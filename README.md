@@ -1,7 +1,13 @@
 # Sortify
 [Prototype](https://www.dropbox.com/s/grnbmibvuluhv9j/Prototype.pdf?dl=)
 
-### Usefull Documentation
+### Team Members
+
+* Guilherme Lameira de Almeida
+* Achintya Chandwani
+
+
+### Useful Documentation
 
 [React Docs](https://reactjs.org/docs/)
 
