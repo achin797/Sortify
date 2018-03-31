@@ -7,4 +7,4 @@
 
 [Less Docs](http://lesscss.org/features/)
 
-[Spotify Endpoint](https://developer.spotify.com/web-api/endpoint-reference/)
+[Spotify Endpoint](https://beta.developer.spotify.com/documentation/web-api/reference/)
