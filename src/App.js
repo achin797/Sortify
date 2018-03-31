@@ -1,17 +1,22 @@
-import React, { Component } from 'react';
-import logo from './logo.svg';
+import React, {Component} from 'react';
 import './App.css';
 
+import Canvas from './components/Canvas';
+import HeaderBar from './components/HeaderBar';
+import SidePanel from './components/SidePanel';
+
 class App extends Component {
-  render() {
-    return (
-      <div className="App">
-        <div className="header-bar"></div>
-        <div className="side-panel"></div>
-        <div className="canvas"></div>
-      </div>
-    );
-  }
+    render() {
+        return (
+            <div className="App">
+                <HeaderBar/>
+                <div>
+                    <Canvas/>
+                    <SidePanel/>
+                </div>
+            </div>
+        );
+    }
 }
 
 export default App;
