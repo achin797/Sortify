@@ -1,0 +1,13 @@
+@import "./Resources/StyleVariables.less";
+
+html, body, #root, .App {
+  height: 100%;
+  background: black;
+  overflow: hidden;
+
+  .app-body {
+    width: 100%;
+    height: calc(100% - @header-bar-size);
+  }
+
+}

@@ -1,11 +1,11 @@
-import './style/Canvas.css';
+import './Styles/Canvas.css';
 import React from 'react';
 
 class Canvas extends React.Component {
     render() {
         return (
             <div className="canvas">
-                // TODO: Implement this component
+                {/*TODO: Implement this component*/}
             </div>
         );
     }

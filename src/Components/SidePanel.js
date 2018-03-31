@@ -1,11 +1,11 @@
-import './style/SidePanel.css';
+import './Styles/SidePanel.css';
 import React from 'react';
 
 class SidePanel extends React.Component {
     render() {
         return (
             <div className="side-panel">
-                // TODO: Implement this component
+                {/*TODO: Implement this component*/}
             </div>
         );
     }

@@ -24,7 +24,6 @@ yarn-error.log*
 .idea
 
 # css files
-src/Components/Styles/Canvas.css
-src/Components/Styles/HeaderBar.css
-src/Components/Styles/SidePanel.css
+src/Components/Styles/*.css
 src/Resources/StyleVariables.css
+src/*css
