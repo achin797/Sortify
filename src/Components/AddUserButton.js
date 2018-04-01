@@ -20,7 +20,7 @@ class AddUserButton extends React.Component {
             <div className="add-user-button header-bar-item" onClick={this.handleClick}>
                 {/*TODO: Implement this component*/}
                 <label>+</label>
-                <label className="item-description"> Add user</label>
+                {/*<label className="item-description"> Add us</label>*/}
             </div>
         );
     }

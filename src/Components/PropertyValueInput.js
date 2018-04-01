@@ -11,10 +11,15 @@ class PropertyValueInput extends React.Component {
 
         this.onSliderChange = this.onSliderChange.bind(this);
         this.onAfterChange = this.onAfterChange.bind(this);
+        this.toggleProperty = this.toggleProperty.bind(this);
     }
 
     onSliderChange(newValue) {
         this.props.setPropertyValue(this.props.propertyKey, newValue);
+    }
+
+    toggleProperty() {
+        this.props.setPropertyIsActive(this.props.propertyKey, !this.props.isActive);
     }
 
     onAfterChange(newValue) {
@@ -23,20 +28,19 @@ class PropertyValueInput extends React.Component {
 
     render() {
         return (
-            <div className="property-value-input">
+            <div className={this.props.isActive ? "property-value-input active" : "property-value-input" }>
                 {/*TODO: Implement this component*/}
 
-                <Slider value={this.props.value}
-                        onChange={this.onSliderChange} onAfterChange={this.onAfterChange}
-                />
+                <div>
+                    <Slider value={this.props.value}
+                            onChange={this.onSliderChange} onAfterChange={this.onAfterChange}
+                    />
+                    <label className="toggle-property-button" onClick={this.toggleProperty}>
+                        {this.props.isActive ? "x" : "+"}
+                    </label>
+                </div>
 
-                <input checked={this.props.isActive} type="checkbox" onChange={() => {
-                    this.props.setPropertyIsActive(this.props.propertyKey, !this.props.isActive)
-                }}/>
-
-                <label onClick={() => {
-                    this.props.setPropertyValue(this.props.propertyKey, (this.props.value + .1))
-                }}>{this.props.name} {this.props.value}</label>
+                <label className="property-name">{this.props.name} ({this.props.value})</label>
 
             </div>
         );

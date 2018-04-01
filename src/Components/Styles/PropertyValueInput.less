@@ -12,3 +12,29 @@
   background-color: @active-color !important;
   border: none !important;
 }
+
+.toggle-property-button {
+  color: @inactive-color !important;
+  &.active {
+    color: @active-color !important;
+  }
+}
+
+.property-value-input {
+
+  .property-name {
+    color: white;
+    font-size: 12px;
+    font-weight: 100;
+  }
+
+  .toggle-property-button {
+    color: @active-color !important;
+  }
+
+  &.active {
+    .toggle-property-button {
+      color: @inactive-color !important;
+    }
+  }
+}

@@ -13,3 +13,9 @@ body .app-body,
   width: 100%;
   height: calc(100% - 80px);
 }
+html label,
+body label,
+#root label,
+.App label {
+  font-family: "SF UI Display";
+}
