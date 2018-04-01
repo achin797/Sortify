@@ -32,7 +32,14 @@
     color: @active-color !important;
   }
 
+  .rc-slider-handle {
+    visibility: hidden;
+  }
+
   &.active {
+    .rc-slider-handle {
+      visibility: visible;
+    }
     .toggle-property-button {
       color: @inactive-color !important;
     }

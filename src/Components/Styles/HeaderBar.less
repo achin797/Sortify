@@ -4,19 +4,21 @@
   background: @bg-gradient-top-right;
   width: 100%;
   height: @header-bar-size;
-  padding-top: 15px;
+  padding-top: 9px;
   padding-right: 25px;
   box-sizing: border-box;
+  position: absolute;
+
 
   .item-container {
     margin-left: auto;
     width: fit-content;
 
     .header-bar-item {
-      width: 50px;
-      height: 50px;
+      width: 40px;
+      height: 40px;
       border-radius: 50%;
-      margin: 0 10px;
+      margin: 0 8px;
       display: inline-block;
 
       .item-description{
@@ -37,6 +39,7 @@
         white-space: nowrap;
         position: relative;
         display: block;
+        z-index: 1000;
       }
 
       &:hover .item-description {

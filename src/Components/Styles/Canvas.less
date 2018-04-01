@@ -5,5 +5,25 @@
   width: @golden-ration-big-percentage;
   height: 100%;
   display: inline-block;
+  position: absolute;
+  margin-top: @header-bar-size;
+  margin-left: @golden-ration-small-percentage;
+
+  .canvas-drag-area {
+    width: 100%;
+    height: calc(100% - 200px);
+
+    .draggable-element {
+      width: 100px;
+      height: 100px;
+      background: deeppink;
+      &.toFront {
+        position: relative;
+        z-index: 1000;
+      }
+    }
+  }
+
+
 
 }
