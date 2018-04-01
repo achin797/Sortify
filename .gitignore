@@ -26,4 +26,4 @@ yarn-error.log*
 # css files
 src/Components/Styles/*.css
 src/Resources/StyleVariables.css
-src/*css
+src/App.css
