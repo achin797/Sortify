@@ -18,9 +18,8 @@ class UserIcon extends React.Component {
     render() {
         return (
             <div className="user-icon header-bar-item" onClick={this.handleClick}>
-                {/*TODO: Implement this component*/}
                 <img src={this.props.userData.images[0].url}/>
-                <label className="item-description"> {this.props.userData.display_name}</label>
+                <label className="item-description"> {this.props.userData.display_name.split(" ")[0]}</label>
             </div>
         );
     }

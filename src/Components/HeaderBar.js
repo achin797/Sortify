@@ -29,7 +29,32 @@ class HeaderBar extends React.Component {
         "product": "premium",
         "type": "user",
         "uri": "spotify:user:guilhermelameira"
-    }];
+    },
+        {
+            "birthdate": "1996-03-07",
+            "country": "CA",
+            "display_name": "Sania Shoaib",
+            "email": "sania96sh@gmail.com",
+            "external_urls": {
+                "spotify": "https://open.spotify.com/user/sania96sh"
+            },
+            "followers": {
+                "href": null,
+                "total": 20
+            },
+            "href": "https://api.spotify.com/v1/users/sania96sh",
+            "id": "sania96sh",
+            "images": [
+                {
+                    "height": null,
+                    "url": "https://lookaside.facebook.com/platform/profilepic/?asid=10202662090131490&height=200&width=200&ext=1522783773&hash=AeRHwksu6H7LtZ4k",
+                    "width": null
+                }
+            ],
+            "product": "premium",
+            "type": "user",
+            "uri": "spotify:user:sania96sh"
+        }];
 
     constructor(props) {
         super(props);
@@ -38,7 +63,7 @@ class HeaderBar extends React.Component {
     }
 
     makeUsers() {
-        return this.users.map(user => <UserIcon userData={user}/>);
+        return this.users.map(user => <UserIcon key={user.id} userData={user}/>);
     }
 
     render() {
