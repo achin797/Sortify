@@ -1,0 +1,18 @@
+@import "../../Resources/StyleVariables.less";
+
+.drag-area {
+  width: 100%;
+  height: calc(100% - 60px);
+
+  .draggable-element {
+    padding: 10px;
+    display: inline-block;
+
+    &.toFront {
+      .canvas-window {
+      }
+      position: relative;
+      z-index: 1000;
+    }
+  }
+}

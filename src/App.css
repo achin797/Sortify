@@ -19,3 +19,9 @@ body label,
 .App label {
   font-family: "SF UI Display";
 }
+html ::-webkit-scrollbar-thumb,
+body ::-webkit-scrollbar-thumb,
+#root ::-webkit-scrollbar-thumb,
+.App ::-webkit-scrollbar-thumb {
+  width: 10px !important;
+}

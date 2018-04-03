@@ -9,21 +9,18 @@
   margin-top: @header-bar-size;
   margin-left: @golden-ration-small-percentage;
 
-  .canvas-drag-area {
-    width: 100%;
-    height: calc(100% - 200px);
-
-    .draggable-element {
-      width: 100px;
-      height: 100px;
-      background: deeppink;
-      &.toFront {
-        position: relative;
-        z-index: 1000;
-      }
-    }
+  .sample-element-1 {
+    width: 200px;
+    height: 100px;
+    background: greenyellow;
   }
 
+  .sample-element-2 {
+    width: 100px;
+    height: 100px;
+    background: darkorange;
+    border-radius: 50%;
 
+  }
 
 }

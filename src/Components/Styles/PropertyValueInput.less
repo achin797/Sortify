@@ -13,6 +13,12 @@
   border: none !important;
 }
 
+.rc-slider-handle {
+  margin-top: -2px !important;
+  width: 8px !important;
+  height: 8px !important;
+}
+
 .toggle-property-button {
   color: @inactive-color !important;
   &.active {
@@ -22,14 +28,22 @@
 
 .property-value-input {
 
+  margin: 10px 0;
+
   .property-name {
     color: white;
     font-size: 12px;
     font-weight: 100;
   }
 
+  .rc-slider {
+    width: 200px;
+    display: inline-block;
+  }
+
   .toggle-property-button {
     color: @active-color !important;
+    margin-left: 10px;
   }
 
   .rc-slider-handle {
