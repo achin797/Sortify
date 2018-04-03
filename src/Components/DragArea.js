@@ -10,7 +10,8 @@ class DragArea extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            frontElementKey: null
+            activeElementKey: null,
+            zIndexOrder: []
         };
         this.makeDraggable = this.makeDraggable.bind(this);
         this.makeAllDraggable = this.makeAllDraggable.bind(this);
@@ -18,14 +19,19 @@ class DragArea extends React.Component {
     }
 
     bringToFront(key) {
+        let zIndexOrder = this.state.zIndexOrder;
+        let currentIndex = zIndexOrder.indexOf(key);
+        if (currentIndex !== -1) {
+            zIndexOrder.splice(currentIndex, 1);
+        }
+        zIndexOrder.unshift(key);
         this.setState({
-            frontElementKey: key
+            activeElementKey: key,
+            zIndexOrder: zIndexOrder
         });
-
     }
 
     makeDraggable(component) {
-        console.log(component)
         return <Draggable
             bounds="parent"
             handle=".draggable-element"
@@ -47,10 +53,13 @@ class DragArea extends React.Component {
         const elements = [];
         let i = 0;
         for (let component of this.props.children) {
+            let zIndexOrderIndex = this.state.zIndexOrder.indexOf(String(i));
+            const zIndex = (zIndexOrderIndex !== -1) ? 1000 - zIndexOrderIndex : null;
             elements.push(
                 <div
-                    className={(this.state.frontElementKey == i) ? "draggable-element toFront" : "draggable-element"}
-                    key={i} defaultPosition={component.props.defaultPosition ? component.props.defaultPosition : {x: 0, y: 0}}>
+                    className={(this.state.activeElementKey == i) ? "draggable-element active-element" : "draggable-element"}
+                    key={i} style={{zIndex}}
+                    defaultPosition={component.props.defaultPosition ? component.props.defaultPosition : {x: 0, y: 0}}>
                     {component}
                 </div>
             );

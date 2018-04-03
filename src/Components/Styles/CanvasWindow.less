@@ -4,6 +4,7 @@
   background: rgba(3, 5, 7, 0.8);
   border-radius: 20px;
   padding: 10px 0px;
+  //border: 1px solid @bg-light-color;
 
   .canvas-window-title-area {
     padding: 0px 20px;
@@ -23,4 +24,13 @@
     padding: 0px 20px;
   }
 
+}
+
+&.active-element {
+  .canvas-window {
+    background: rgba(3, 5, 7, 1);
+    border: 1px solid @bg-light-color;
+    box-sizing: border-box;
+    margin:-1px;
+  }
 }

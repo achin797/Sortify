@@ -13,9 +13,18 @@ class Canvas extends React.Component { //TODO Extract the draggable area into it
                 {/*TODO: Implement this component*/}
 
                 <DragArea>
-                    <div className="sample-element-1"> </div>
-                    <div className="sample-element-2" defaultPosition={{x: 200, y: 200}}></div>
-                    <CanvasWindow title="Desired Properties">
+                    {/*<div className="sample-element-1"> </div>*/}
+                    {/*<div className="sample-element-2" defaultPosition={{x: 200, y: 200}}></div>*/}
+                    <CanvasWindow title="Song Features">
+                        <DesiredProperties/>
+                    </CanvasWindow>
+                    <CanvasWindow title="Song Features">
+                        <DesiredProperties/>
+                    </CanvasWindow>
+                    <CanvasWindow title="Song Features">
+                        <DesiredProperties/>
+                    </CanvasWindow>
+                    <CanvasWindow title="Song Features">
                         <DesiredProperties/>
                     </CanvasWindow>
                 </DragArea>
