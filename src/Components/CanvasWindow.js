@@ -6,11 +6,26 @@ import React from 'react';
 
 class CanvasWindow extends React.Component {
 
+    constructor(props) {
+        super(props);
+
+        this.state = {
+            isMinified: true
+        }
+
+        this.toggleMinified = this.toggleMinified.bind(this);
+    }
+
+    toggleMinified() {
+        this.setState({isMinified: !this.state.isMinified})
+    }
+
     render() {
+        const className= this.state.isMinified? "canvas-window minified" : "canvas-window";
         return (
-            <div className="canvas-window">
+            <div className={className}>
                 <div className="canvas-window-title-area">
-                    <label className="canvas-window-title">
+                    <label className="canvas-window-title" onDoubleClick={this.toggleMinified}>
                         {this.props.title}
                     </label>
                 </div>
