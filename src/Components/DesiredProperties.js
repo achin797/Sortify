@@ -2,26 +2,23 @@ import './Styles/DesiredProperties.css';
 import React from 'react';
 import PropertyValueInput from './PropertyValueInput'
 
+const SONG_FEATURES = ["Energy", "Valence", "Tempo", "Acousticness", "Speechiness", "Instrumentalness", "Danceability", "Loudness", "Liveness"];
+
 class DesiredProperties extends React.Component {
 
     constructor(props) {
         super(props);
 
-        this.state = {
-            properties: {
-                energy: {name: "Energy", isActive: true, value: 50},
-                valence: {name: "Valence", isActive: true, value: 50},
-                popularity: {name: "Popularity", isActive: true, value: 50},
-                tempo: {name: "Tempo", isActive: true, value: 50},
-                age: {name: "Age", isActive: true, value: 50},
-                acousticness: {name: "Acousticness", isActive: true, value: 50},
-                speechiness: {name: "Speechiness", isActive: true, value: 50},
-                instrumentalness: {name: "Instrumentalness", isActive: true, value: 50},
-                danceability: {name: "Danceability", isActive: true, value: 50},
-                loudness: {name: "Loudness", isActive: true, value: 50},
-                liveness: {name: "Liveness", isActive: true, value: 50}
+        let properties = {};
+        for (let feature of SONG_FEATURES) {
+            properties[feature.toLowerCase()] = {
+                name: feature,
+                isActive: false,
+                value: 50
             }
-        };
+        }
+
+        this.state = {properties};
 
         this.makeProperties = this.makeProperties.bind(this)
         this.setPropertyValue = this.setPropertyValue.bind(this)

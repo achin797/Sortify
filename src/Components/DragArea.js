@@ -38,7 +38,8 @@ class DragArea extends React.Component {
             defaultPosition={component.props.defaultPosition}
             position={null}
             grid={[1, 1]}
-            onMouseDown={() => {
+            onMouseDown={(event) => {
+                event.stopPropagation();
                 this.bringToFront(component.key);
             }}>
             {component}
@@ -67,7 +68,9 @@ class DragArea extends React.Component {
         }
 
         return (
-            <div className="drag-area">
+            <div className="drag-area" onMouseDown={() => {
+                this.setState({activeElementKey: null});
+            }}>
                 {this.makeAllDraggable(elements)}
             </div>
         );
