@@ -47,7 +47,7 @@ class HeaderBar extends React.Component {
             "images": [
                 {
                     "height": null,
-                    "url": "https://lookaside.facebook.com/platform/profilepic/?asid=10202662090131490&height=200&width=200&ext=1522783773&hash=AeRHwksu6H7LtZ4k",
+                    "url": "https://scontent-sea1-1.xx.fbcdn.net/v/t31.0-8/14976743_10211181567079394_18591589276398329_o.jpg?_nc_cat=0&oh=31c6cc9594e253b7ef7d05edce58e9dd&oe=5B291223",
                     "width": null
                 }
             ],

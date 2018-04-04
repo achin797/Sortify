@@ -11,14 +11,13 @@ class UserIcon extends React.Component {
 
     handleClick() {
         alert("USER");
-
     }
 
 
     render() {
         return (
             <div className="user-icon header-bar-item" onClick={this.handleClick}>
-                <img src={this.props.userData.images[0].url}/>
+                <img src={this.props.userData.images[0].url} alt=""/>
                 <label className="item-description"> {this.props.userData.display_name.split(" ")[0]}</label>
             </div>
         );

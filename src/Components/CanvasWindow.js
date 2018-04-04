@@ -10,7 +10,7 @@ class CanvasWindow extends React.Component {
         super(props);
 
         this.state = {
-            isMinified: true
+            isMinified: (this.props.defaultMinified) !== undefined ? this.props.defaultMinified : true
         }
 
         this.toggleMinified = this.toggleMinified.bind(this);
@@ -21,14 +21,18 @@ class CanvasWindow extends React.Component {
     }
 
     render() {
-        const className= this.state.isMinified? "canvas-window minified" : "canvas-window";
+        const className = this.state.isMinified ? "canvas-window minified" : "canvas-window";
         return (
             <div className={className}>
-                <div className="canvas-window-title-area">
-                    <label className="canvas-window-title" onDoubleClick={this.toggleMinified}>
-                        {this.props.title}
-                    </label>
-                </div>
+                {(this.props.title) ?
+                    (
+                        <div className="canvas-window-title-area">
+                            <label className="canvas-window-title" onDoubleClick={this.toggleMinified}>
+                                {this.props.title}
+                            </label>
+                        </div>
+                    ) : null
+                }
 
                 <div className="canvas-window-content-area">
                     {this.props.children}

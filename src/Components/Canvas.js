@@ -3,6 +3,7 @@ import React from 'react';
 import DragArea from './DragArea'
 import CanvasWindow from './CanvasWindow'
 import DesiredProperties from './DesiredProperties'
+import Player from './Player'
 
 
 class Canvas extends React.Component { //TODO Extract the draggable area into its own component inside the canvas
@@ -21,8 +22,8 @@ class Canvas extends React.Component { //TODO Extract the draggable area into it
                     <CanvasWindow title="Some Other Shit" defaultPosition={{x: 200, y: 0}}>
                         <DesiredProperties/>
                     </CanvasWindow>
-                    <CanvasWindow title="Guilherme Lameira de Almeida" defaultPosition={{x: 400, y: 0}}>
-                        <DesiredProperties/>
+                    <CanvasWindow defaultPosition={{x: 400, y: 0}} defaultMinified={false}>
+                        <Player/>
                     </CanvasWindow>
                 </DragArea>
 

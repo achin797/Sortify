@@ -11,7 +11,6 @@ class AddUserButton extends React.Component {
 
     handleClick() {
         alert("add the user");
-
     }
 
 
