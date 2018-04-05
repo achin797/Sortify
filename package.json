@@ -4,6 +4,7 @@
   "private": true,
   "dependencies": {
     "jquery": "^3.3.1",
+    "less": "^3.0.1",
     "rc-slider": "^8.6.1",
     "react": "^16.3.0",
     "react-dom": "^16.3.0",

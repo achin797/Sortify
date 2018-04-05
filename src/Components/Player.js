@@ -16,9 +16,9 @@ class Player extends React.Component {
 
     handlePlayPauseClick() {
         if (this.state.isPlaying) {
-            this.spotifyService.pause();
+            SpotifyService.pause();
         } else {
-            this.spotifyService.play(["3n69hLUdIsSa1WlRmjMZlW", "1o22EcqsCANhwYdaNOSdwS", "3n69hLUdIsSa1WlRmjMZlW"]);
+            SpotifyService.play(["3n69hLUdIsSa1WlRmjMZlW", "1o22EcqsCANhwYdaNOSdwS", "3n69hLUdIsSa1WlRmjMZlW"]);
         }
 
         this.setState({
@@ -31,9 +31,9 @@ class Player extends React.Component {
         return (
             <div className="player">
 
-                <p className="previous" onMouseDown={this.spotifyService.previous}> ◀◀ </p>
+                <p className="previous" onMouseDown={SpotifyService.previous}> ◀◀ </p>
                 <p className="play-pause" onMouseDown={this.handlePlayPauseClick}> {this.state.isPlaying ? "❚❚" : "►"} </p>
-                <p className="next" onMouseDown={this.spotifyService.next}> ►► </p>
+                <p className="next" onMouseDown={SpotifyService.next}> ►► </p>
 
             </div>
         );
