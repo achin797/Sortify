@@ -1,71 +1,117 @@
 import $ from "jquery";
-
-// For now we must manually enter token
-const ACCESS_TOKEN = "BQANTAQ_studnZ4oiXhMqdvMsMZzZI2mxGAPTVKnkoRBj5StXnSvt21YHCbfz111I0aU-87KxvEHeHKYLa9e1RMCM-otruwj2d1knkuzjfsY9rBzxJ46KYnPDLOc-swRhWI4eTI0RccBJfUQ2GNxecxX4jv-A0P2Jz0VSdV9hnAa-uMmTjvcrWGi4kp_3OTQgCzBfQsT3A9Ao-rsJYCBnt316-5VVomTynetW2RCKf0c2O7wVoYT8N9YrBj257F3okHmEHQ5Q54tBXfO9yg";
+import SpotifyDataParser from "./SpotifyDataParser"
+import ErrorHandler from "./ErrorHandler"
 
 class SpotifyService {
 
+    static setAuthToken(token) {
+        $.ajaxSetup({
+            headers: {
+                'Authorization': 'Bearer ' + token
+            }
+        });
+    }
+
     static play() {
-        SpotifyService.playSongs([]);
+        return SpotifyService.playSongs([]);
     }
 
     static playSongs(songIds) {
-        const requestData = songIds ? {
-                uris: songIds.map(id => ("spotify:track:" + id))
-            } : {};
+        return new Promise((resolve, reject) => {
+            const requestData = songIds ? {
+                    uris: songIds.map(id => ("spotify:track:" + id))
+                } : {};
 
-        $.ajax({
-            method: "PUT",
-            url: 'https://api.spotify.com/v1/me/player/play',
-            headers: {
-                'Authorization': 'Bearer ' + ACCESS_TOKEN
-            },
-            data: JSON.stringify(requestData)
-        })
+            let request = $.ajax({
+                method: "PUT",
+                url: 'https://api.spotify.com/v1/me/player/play',
+                data: JSON.stringify(requestData)
+            });
 
+            request.done(response => {
+                resolve(response)
+            });
+
+            request.fail(error => {
+                ErrorHandler.handleError(error);
+                reject(error);
+            });
+        });
     }
 
     static pause() {
-        $.ajax({
-            method: "PUT",
-            url: 'https://api.spotify.com/v1/me/player/pause',
-            headers: {
-                'Authorization': 'Bearer ' + ACCESS_TOKEN
-            }
-        })
+        return new Promise((resolve, reject) => {
+            let request = $.ajax({
+                method: "PUT",
+                url: 'https://api.spotify.com/v1/me/player/pause',
+            });
+
+            request.done(response => {
+                resolve(response)
+            });
+
+            request.fail(error => {
+                ErrorHandler.handleError(error);
+                reject(error);
+            });
+        });
     }
 
     static next() {
-        $.ajax({
-            method: "POST",
-            url: 'https://api.spotify.com/v1/me/player/next',
-            headers: {
-                'Authorization': 'Bearer ' + ACCESS_TOKEN
-            }
-        })
+        return new Promise((resolve, reject) => {
+            let request = $.ajax({
+                method: "POST",
+                url: 'https://api.spotify.com/v1/me/player/next',
+            });
+
+            request.done(response => {
+                resolve(response)
+            });
+
+            request.fail(error => {
+                ErrorHandler.handleError(error);
+                reject(error);
+            });
+        });
     }
 
     static previous() {
-        $.ajax({
-            method: "POST",
-            url: 'https://api.spotify.com/v1/me/player/previous',
-            headers: {
-                'Authorization': 'Bearer ' + ACCESS_TOKEN
-            }
-        })
+        return new Promise((resolve, reject) => {
+            let request = $.ajax({
+                method: "POST",
+                url: 'https://api.spotify.com/v1/me/player/previous',
+            });
+
+            request.done(response => {
+                resolve(response)
+            });
+
+            request.fail(error => {
+                ErrorHandler.handleError(error);
+                reject(error);
+            });
+        });
     }
 
     static getDevices() {
-        $.ajax({
-            method: "GET",
-            url: 'https://api.spotify.com/v1/me/player/devices',
-            headers: {
-                'Authorization': 'Bearer ' + ACCESS_TOKEN
-            }
-        })
+        return new Promise((resolve, reject) => {
+            let request = $.ajax({
+                method: "GET",
+                url: 'https://api.spotify.com/v1/me/player/devices',
+            })
+
+            request.done(response => {
+                resolve(response)
+            });
+
+            request.fail(error => {
+                ErrorHandler.handleError(error);
+                reject(error);
+            });
+        });
     }
 
-    static getSongsFeatures(songIds) {
+    static _getSongsFeatures(songIds) {
         const MAX_IDS_PER_REQUEST = 50;
 
         return new Promise((resolve, reject) => {
@@ -79,9 +125,6 @@ class SpotifyService {
                 const request = $.ajax({
                     method: "GET",
                     url: ('https://api.spotify.com/v1/audio-features?ids=' + currentSongsIds.join()),
-                    headers: {
-                        'Authorization': 'Bearer ' + ACCESS_TOKEN
-                    }
                 });
 
                 request.done(response => {
@@ -98,7 +141,8 @@ class SpotifyService {
                 });
 
                 request.fail(error => {
-                    return reject(error);
+                    ErrorHandler.handleError(error);
+                    reject(error);
                 });
             };
 
@@ -114,9 +158,12 @@ class SpotifyService {
             const getNextSongs = (url) => {
 
                 if (!url) {
-                    SpotifyService.augmentSongs(SpotifyService.parseSongs(songs)).then((completeSongs) => {
+                    SpotifyService._addAudioFeatures(SpotifyDataParser.parseSongs(songs)).then((completeSongs) => {
                         resolve(completeSongs);
-                        console.log( "There are "+ Object.keys(completeSongs).length + " songs for this user. Here they are");
+
+                        //TODO: remove v
+                        alert("Check console to se the songs")
+                        console.log("There are " + Object.keys(completeSongs).length + " songs");
                         console.log(completeSongs);
                     });
                     return;
@@ -124,10 +171,7 @@ class SpotifyService {
 
                 let request = $.ajax({
                     method: "GET",
-                    url: url,
-                    headers: {
-                        'Authorization': 'Bearer ' + ACCESS_TOKEN
-                    }
+                    url: url
                 });
 
                 request.done(response => {
@@ -136,7 +180,8 @@ class SpotifyService {
                 });
 
                 request.fail(error => {
-                    return reject(error);
+                    ErrorHandler.handleError(error);
+                    reject(error);
                 });
             };
 
@@ -145,58 +190,16 @@ class SpotifyService {
         });
     }
 
-
-    static parseSongs(originalSongs) {
-        let songs = {};
-
-        originalSongs.forEach((originalSong) => {
-            let song = {
-                id: originalSong.track.id,
-                name: originalSong.track.name,
-                artists: originalSong.track.artists,
-                album: originalSong.track.album,
-                popularity: originalSong.track.popularity,
-                duration_ms: originalSong.track.duration_ms,
-                added_at: originalSong.added_at
-
-            }
-
-            songs[originalSong.track.id] = song;
-
-        });
-
-        return songs;
-    }
-
-    static augmentSongs(songs) {
-
+    static _addAudioFeatures(songs) {
         return new Promise((resolve, reject) => {
-            const songFeaturesPromise = SpotifyService.getSongsFeatures(Object.keys(songs));
-            songFeaturesPromise.then((songFeaturesList) => {
-
-                songFeaturesList.forEach((songFeatures) => {
-                    songs[songFeatures.id].features = {
-                        danceability: songFeatures.danceability,
-                        energy: songFeatures.energy,
-                        key: songFeatures.key,
-                        loudness: songFeatures.loudness,
-                        mode: songFeatures.mode,
-                        speechiness: songFeatures.speechiness,
-                        acousticness: songFeatures.acousticness,
-                        instrumentalness: songFeatures.instrumentalness,
-                        liveness: songFeatures.liveness,
-                        valence: songFeatures.valence,
-                        tempo: songFeatures.tempo,
-                        time_signature: songFeatures.time_signature
-                    };
+            SpotifyService._getSongsFeatures(Object.keys(songs)).then((audioFeaturesList) => {
+                audioFeaturesList.forEach((audioFeatures) => {
+                    songs[audioFeatures.id].audio_features = SpotifyDataParser.parseAudioFeatures(audioFeatures);
                 });
 
                 resolve(songs)
-
-            })
-
+            });
         });
-
     }
 }
 

@@ -1,0 +1,64 @@
+{
+  "3s84M9YrAhbPzktL3TSLVZ": {
+    "album": {
+      "album_type": "single",
+      "artists": [
+        {
+          "id": "5sK8BsvyDl4TFA6KaBf8or",
+          "name": "Charly Black"
+        },
+        {
+          "id": "4V8Sr092TqfHkfAA5fXXqG",
+          "name": "Luis Fonsi",
+        }
+      ],
+      "id": "6dadD9mVwomDOQvkWxuKqZ",
+      "images": [
+        {
+          "height": 640,
+          "url": "https://i.scdn.co/image/38ed003cc2da4abe16a68d06c7327d274f13c198",
+          "width": 640
+        },
+        {
+          "height": 300,
+          "url": "https://i.scdn.co/image/c4fcc9dd8cb84ee3015d9dd21040e98c41131e3b",
+          "width": 300
+        },
+        {
+          "height": 64,
+          "url": "https://i.scdn.co/image/3359bb87985c0aed8639252d0496f9add7e4c863",
+          "width": 64
+        }
+      ],
+      "name": "Party Animal",
+      "release_date": "2017-09-15"
+    },
+    "artists": [
+      {
+        "id": "5sK8BsvyDl4TFA6KaBf8or",
+        "name": "Charly Black"
+      },
+      {
+        "id": "4V8Sr092TqfHkfAA5fXXqG",
+        "name": "Luis Fonsi"
+      }
+    ],
+    "duration_ms": 195813,
+    "id": "3s84M9YrAhbPzktL3TSLVZ",
+    "is_playable": true,
+    "name": "Party Animal",
+    "popularity": 69,
+    "added_at": "2018-03-26T16:56:01Z",
+    "audio_features": {
+      "danceability": 0.808,
+      "energy": 0.626,
+      "loudness": -12.733,
+      "speechiness": 0.168,
+      "acousticness": 0.00187,
+      "instrumentalness": 0.159,
+      "liveness": 0.376,
+      "valence": 0.369,
+      "tempo": 123.99
+    }
+  }
+}

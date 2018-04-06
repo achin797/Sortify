@@ -6,7 +6,6 @@ class Player extends React.Component {
 
     constructor(props) {
         super(props);
-        this.spotifyService = new SpotifyService();
         this.state = {
             isPlaying: false
         }
