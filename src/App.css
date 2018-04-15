@@ -25,3 +25,13 @@ body ::-webkit-scrollbar-thumb,
 .App ::-webkit-scrollbar-thumb {
   width: 10px !important;
 }
+html.loading .app-body,
+body.loading .app-body,
+#root.loading .app-body,
+.App.loading .app-body,
+html.loading .header-bar,
+body.loading .header-bar,
+#root.loading .header-bar,
+.App.loading .header-bar {
+  filter: blur(10px);
+}

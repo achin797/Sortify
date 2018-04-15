@@ -36,6 +36,10 @@ class SpotifyDataParser {
         return parsedSongs;
     }
 
+    static parseUserProfile({id, display_name, product, email, images, followers, country, birthdate}) {
+        return {id, display_name, product, email, images, followers: followers.total, country, birthdate}
+    };
+
 }
 
 export default SpotifyDataParser;

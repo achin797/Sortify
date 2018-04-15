@@ -10,7 +10,7 @@ class CanvasWindow extends React.Component {
         super(props);
 
         this.state = {
-            isMinified: (this.props.defaultMinified) !== undefined ? this.props.defaultMinified : true
+            isMinified: (this.props.defaultMinified) !== undefined ? this.props.defaultMinified : false
         }
 
         this.toggleMinified = this.toggleMinified.bind(this);

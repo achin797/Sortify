@@ -17,7 +17,7 @@ class Player extends React.Component {
         if (this.state.isPlaying) {
             SpotifyService.pause();
         } else {
-            SpotifyService.play(["3n69hLUdIsSa1WlRmjMZlW", "1o22EcqsCANhwYdaNOSdwS", "3n69hLUdIsSa1WlRmjMZlW"]);
+            SpotifyService.playSongs(["3n69hLUdIsSa1WlRmjMZlW", "1o22EcqsCANhwYdaNOSdwS", "3n69hLUdIsSa1WlRmjMZlW"]);
         }
 
         this.setState({

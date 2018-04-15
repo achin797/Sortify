@@ -111,6 +111,24 @@ class SpotifyService {
         });
     }
 
+    static getUserProfile() {
+        return new Promise((resolve, reject) => {
+            let request = $.ajax({
+                method: "GET",
+                url: 'https://api.spotify.com/v1/me',
+            })
+
+            request.done(response => {
+                resolve(SpotifyDataParser.parseUserProfile(response))
+            });
+
+            request.fail(error => {
+                ErrorHandler.handleError(error);
+                reject(error);
+            });
+        });
+    }
+
     static _getSongsFeatures(songIds) {
         const MAX_IDS_PER_REQUEST = 50;
 
@@ -162,9 +180,9 @@ class SpotifyService {
                         resolve(completeSongs);
 
                         //TODO: remove v
-                        alert("Check console to se the songs")
-                        console.log("There are " + Object.keys(completeSongs).length + " songs");
-                        console.log(completeSongs);
+                        //alert("Check console to se the songs")
+                        //console.log("There are " + Object.keys(completeSongs).length + " songs");
+                        //console.log(completeSongs);
                     });
                     return;
                 }

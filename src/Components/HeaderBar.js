@@ -2,6 +2,8 @@ import './Styles/HeaderBar.css';
 import React from 'react';
 import AddUserButton from './AddUserButton'
 import UserIcon from './UserIcon'
+import SortifyManager from '../SortifyManager'
+
 
 
 class HeaderBar extends React.Component {
@@ -58,12 +60,23 @@ class HeaderBar extends React.Component {
 
     constructor(props) {
         super(props);
+        this.state = {
 
-        this.makeUsers = this.makeUsers.bind(this)
+        }
+
+        this.makeUsers = this.makeUsers.bind(this);
+        this.updateUser = this.updateUser.bind(this);
+    }
+
+    updateUser() {
+        this.setState({
+            users: [(new SortifyManager()).user]
+        })
     }
 
     makeUsers() {
-        return this.users.map(user => <UserIcon key={user.id} userData={user}/>);
+
+        return this.state.users? this.state.users.map(user => <UserIcon key={user.id} userData={user}/>) : undefined;
     }
 
     render() {
@@ -71,8 +84,7 @@ class HeaderBar extends React.Component {
             <div className="header-bar">
                 {/*TODO: Implement this component*/}
                 <div className="item-container">
-                    <AddUserButton/>
-
+                    <AddUserButton updateUser = {this.updateUser} setLoading={this.props.setLoading}/>
                     {this.makeUsers()}
                 </div>
 
