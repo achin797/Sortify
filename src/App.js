@@ -4,26 +4,20 @@ import './App.css';
 import Canvas from './Components/Canvas';
 import HeaderBar from './Components/HeaderBar';
 import SidePanel from './Components/SidePanel';
-import LoadingScreen from './Components/LoadingScreen';
-import SpotifyService from './Services/SpotifyService'
+import LoadingScreen from './Containers/LoadingScreen';
+import SpotifyService from './Services/SpotifyService';
 
 class App extends Component {
 
-    constructor(props) {
-        super(props);
-        this.state = {
-            isLoading: false
-        }
-    }
 
     render() {
-        SpotifyService.setAuthToken("BQDpLCkBbWrNJ0xdsrPzlYASN18MH6sMaAE8i3sAdReB3QuLB6Td7YiFwEAY5peDc2oKjrn-4Pr5stkIz-8gyindnpxx1NJg8Vk9IXUXKMC2FFMUrwTo3hK6bGzk4LJOJ1eMBhklT_EtJH78X6BPMl-Ap7zfPyWPff4LUDS3q1rk8bVYXQME0Qy6Mv-MhU027YkV8iC_URcQtj769qmvCQDT_kX88mb1pV7GplKxaXiH4o7VaEl49CZyYaoJ1fVZzszjPplrcq-yQPEoNBM")
+        //SpotifyService.setAuthToken("BQAPCEj8wfhw1Tmwbfjq4cW0AWns0oXNpnMNfIdiJyBYVCVNYK60G5vXm2oPRXKEasNQxA3BNyspXmlmhjftQOjZMGuAul14ikmpuCNdlQPCfW_3HFOy-ODoOg6YrcsQPF4JG5IAnQP056AHrd1p5EQyZK8q3SFagU4z3z0mu7f3ytnHf8TTQsbiMGP4kysNicwixpTbI8VCgP3C0dQ_oAYoV-_1QTFp-0x0ZAQ6A24nyFGvZuMlOxIMvdiY0veKShVGNzHuXYVBtF1GKoc")
         //SpotifyService.getUserProfile();
 
         return (
-            <div className={this.state.isLoading ? "App loading" : "App"}>
+            <div className={this.props.loading.isLoading ? "App loading" : "App"}>
                 <LoadingScreen/>
-                <HeaderBar setLoading={(state) => {this.setState({isLoading: state})}}/>
+                <HeaderBar/>
                 <div className="app-body">
                     <SidePanel/>
                     <Canvas/>

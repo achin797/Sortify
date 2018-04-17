@@ -1,6 +1,6 @@
 import './Styles/SidePanel.css';
 import React from 'react';
-import SongList from './SongList'
+import SongList from '../Containers/SongList'
 
 class SidePanel extends React.Component {
     render() {

@@ -1,5 +1,96 @@
 @import "../../Resources/StyleVariables.less";
 
-.song-list {
+.song-list-container {
+  width: 100%;
+  height: 100%;
+
+  .song-list {
+    width: 100%;
+    overflow-y: scroll;
+    height: calc(100% - 100px);
+    padding: 15px;
+    box-sizing: border-box;
+    position:absolute;
+
+    .song-container {
+      color: white;
+      //border-bottom: solid @bg-light-color 1px;
+      white-space: nowrap;
+      box-sizing: border-box;
+      border-radius: 5px;
+
+      .song {
+        padding: 8px 15px;
+
+        .song-name {
+          font-size: 12px;
+          font-weight: 200;
+          display: block;
+          text-overflow: ellipsis;
+          overflow: hidden;
+          width: 80%;
+        }
+
+        .song-artists {
+          font-size: 10px;
+          display: block;
+          text-overflow: ellipsis;
+          overflow: hidden;
+          width: 80%;
+          color: #6f6f6f;
+        }
+
+      }
+
+      &:hover {
+        border: solid @bg-light-color 1px;
+        margin: -1px;
+        //background-color: @bg-light-color;
+
+        .song-name {
+          //font-weight: 300;
+        }
+
+        .song-artists {
+          //color: white;
+        }
+
+      }
+
+    }
+
+  }
+
+  .song-list-button-container {
+    background: linear-gradient(to bottom, rgba(1,2,3,0), rgba(1,2,3,.5), rgba(1,2,3,1), rgba(1,2,3,1), rgba(1,2,3,1));
+    padding-top: 50px;
+    position:absolute;
+    bottom: 80px;
+    width: 100%;
+
+
+    .song-list-button {
+      background-color: @bg-dark-color;
+      border: solid @bg-light-color 1px;
+      margin: auto;
+      display: block;
+      border-radius: 15px;
+      padding: 5px 10px;
+      width:100px;
+      text-align: center;
+
+      label {
+        font-size: 12px;
+        font-weight: 300;
+        color: white;
+      }
+
+      &:hover{
+        border: solid @active-color 1px;
+      }
+
+    }
+
+  }
 
 }

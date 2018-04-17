@@ -12,16 +12,9 @@ class Canvas extends React.Component { //TODO Extract the draggable area into it
         const canvasWidth = (window.innerWidth * .7) -200;
         const canvasHeight = window.innerHeight -200;
 
-        console.log( "width" + canvasWidth)
-        console.log( "heigth" + canvasHeight)
-
         return (
             <div className="canvas">
-                {/*TODO: Implement this component*/}
-
                 <DragArea>
-                    {/*<div className="sample-element-1"> </div>*/}
-                    {/*<div className="sample-element-2" defaultPosition={{x: 200, y: 200}}></div>*/}
                     <CanvasWindow title="Song Features" defaultPosition={{x: 0, y: 0}}>
                         <DesiredProperties/>
                     </CanvasWindow>

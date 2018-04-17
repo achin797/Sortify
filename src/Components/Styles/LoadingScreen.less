@@ -17,6 +17,8 @@
     position: fixed;
     left: calc(50% - 100px);
     top: calc(50% - 100px);
+    min-width: 100px;
+    text-align: center;
 
     .circle {
       @keyframes load {
@@ -61,7 +63,6 @@
 
       &:nth-child(1) {
         animation-delay: 0s;
-        margin-left: calc(50% - 28px);
       }
       &:nth-child(2) {
         animation-delay: .15s;
@@ -79,6 +80,7 @@
       margin-top: 20px;
       font-weight: 200;
       font-size: 16px;
+      text-align: center;
     }
 
   }

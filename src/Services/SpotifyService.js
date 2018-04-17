@@ -19,8 +19,8 @@ class SpotifyService {
     static playSongs(songIds) {
         return new Promise((resolve, reject) => {
             const requestData = songIds ? {
-                    uris: songIds.map(id => ("spotify:track:" + id))
-                } : {};
+                uris: songIds.map(id => ("spotify:track:" + id))
+            } : {};
 
             let request = $.ajax({
                 method: "PUT",
@@ -219,6 +219,24 @@ class SpotifyService {
             });
         });
     }
+
+    static newUser(token) {
+        return new Promise((resolve, reject) => {
+            SpotifyService.setAuthToken(token)
+            let userProfile = SpotifyService.getUserProfile();
+            let userSongs = SpotifyService.getUserSongs();
+
+            Promise.all([userProfile, userSongs]).then(([userProfile, userSongs]) => {
+                resolve ({
+                    userId: userProfile.id,
+                    token,
+                    userProfile,
+                    userSongs
+                });
+            })
+        });
+    }
 }
+
 
 export default SpotifyService;
